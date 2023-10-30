@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="container">
-      <header>Job Seeking Stats</header>
+      <header>Job Seeking Stats App</header>
       <p id="intro">
         Hi my name is Alejandro Bermudez, I am a full stack Junior Software
         Engineer who doesnt have a degree in computer science or a college
@@ -18,24 +18,28 @@
         field.
       </p>
       <div id="form-selector">
-        <button>Applied to</button>
-        <button>Heard back</button>
-        <button>Rejected</button>
-        <button>Interviewed</button>
+        <button id="applied-form-button">Applied to</button>
+        <button id="heard-back-form-button">Heard back</button>
+        <button id="rejected-form-button">Rejected</button>
+        <button id="interviewed-form-button">Interviewed</button>
       </div>
       <div class="form-container" id="applied">
+        <p>I applied to..</p>
         <input type="text" placeholder="Enter company name" />
         <button>Add Submission</button>
       </div>
       <div class="form-container" id="heard-back">
+        <p>I heard back from..</p>
         <input type="text" placeholder="Enter company name" />
         <button>Add Submission</button>
       </div>
-      <div class="form-container">
+      <div class="form-container" id="rejected">
+        <p>I got rejected from..</p>
         <input type="text" placeholder="Enter company name" id="rejected" />
         <button>Add Submission</button>
       </div>
-      <div class="form-container">
+      <div class="form-container" id="interview">
+        <p>I got interviewed at..</p>
         <input type="text" placeholder="Enter company name" id="interview" />
         <button>Add Submission</button>
       </div>
