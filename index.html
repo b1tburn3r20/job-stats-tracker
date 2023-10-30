@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Job Seeking Tracker</title>
+  </head>
+  <body>
+    <div id="container">
+      <header>Job Seeking Stats</header>
+      <p id="intro">
+        Hi my name is Alejandro Bermudez, I am a full stack Junior Software
+        Engineer who doesnt have a degree in computer science or a college
+        degree. Other than completing a bootcamp for software engineering
+        immersive, I am completely self-taught. This app is tracking how long,
+        how many applications, interviews etc until I get a job in the related
+        field.
+      </p>
+      <div id="form-selector">
+        <button>Applied to</button>
+        <button>Heard back</button>
+        <button>Rejected</button>
+        <button>Interviewed</button>
+      </div>
+      <div class="form-container" id="applied">
+        <input type="text" placeholder="Enter company name" />
+        <button>Add Submission</button>
+      </div>
+      <div class="form-container" id="heard-back">
+        <input type="text" placeholder="Enter company name" />
+        <button>Add Submission</button>
+      </div>
+      <div class="form-container">
+        <input type="text" placeholder="Enter company name" id="rejected" />
+        <button>Add Submission</button>
+      </div>
+      <div class="form-container">
+        <input type="text" placeholder="Enter company name" id="interview" />
+        <button>Add Submission</button>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
