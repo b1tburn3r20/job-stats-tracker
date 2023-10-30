@@ -25,8 +25,12 @@
       </div>
       <div class="form-container" id="applied">
         <p>I applied to..</p>
-        <input type="text" placeholder="Enter company name" />
-        <button>Add Submission</button>
+        <input
+          type="text"
+          placeholder="Enter company name"
+          id="submit-applied-input"
+        />
+        <button id="submit-applied">Add Submission</button>
       </div>
       <div class="form-container" id="heard-back">
         <p>I heard back from..</p>
@@ -43,6 +47,11 @@
         <input type="text" placeholder="Enter company name" id="interview" />
         <button>Add Submission</button>
       </div>
+      <!-- Showing Statistics -->
+      <div id="jobs-applied-to"></div>
+      <div id="jobs-heard-back-from"></div>
+      <div id="jobs-rejected-from"></div>
+      <div id="jobs-interviewed-for"></div>
     </div>
 
     <script type="module" src="script.js"></script>
