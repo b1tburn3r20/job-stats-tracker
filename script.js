@@ -7,8 +7,9 @@ const appSettings = {
 const app =  initializeApp(appSettings)
 const database = getDatabase(app)
 const jobStatsInDB = ref(database, "jobs")
-
-
+const jobsHeardBackFromInDB = ref(database, "jobsHeardBackFrom")
+const jobsRejectedFromInDB = ref(database, "jobsRejectedFrom")
+const jobsInterviewedForInDB = ref(database, "jobsInterviewedFor")
 
 
 const appliedForm = document.getElementById('applied')
@@ -28,7 +29,10 @@ const jobsInterviewedFor = document.getElementById('jobs-interviewed-for')
 
 const submitAppliedButton = document.getElementById('submit-applied')
 const submitAppliedInput = document.getElementById('submit-applied-input')
+const submitHeardBackButton = document.getElementById('submit-heard-back-button')
+const submitHeardBackInput = document.getElementById('submit-heard-back-input')
 
+const jobsAppliedTo = document.getElementById('jobs-applied-to')
 
 function toggleFormDisplay(form, button){
     form.style.display = 'none'
@@ -54,31 +58,72 @@ toggleFormDisplay(interviewForm, interviewedFormButton)
 
 onValue(jobStatsInDB, function(snapshot){
     if(snapshot.exists()){
-        // clearList(jobsAppliedFor)
         let jobsArray = Object.entries(snapshot.val())
         jobsArray.reverse()
         for(const job of jobsArray){
-            createJobItem(job)
+            returnDataFromDB(job, jobStatsInDB, jobsAppliedTo);
         }
     }
     else{
-        // clearList(jobsAppliedFor)
         let noJobsMessage = document.createElement('p')
         noJobsMessage.textContent = "No jobs applied for or any stats yet"
-        jobsAppliedFor.appendChild(noJobsMessage)
+        jobsAppliedTo.appendChild(noJobsMessage)
     }
-})
+  });
+  
+  onValue(jobsHeardBackFromInDB, function(snapshot){
+    if(snapshot.exists()){
+        let jobsArray = Object.entries(snapshot.val())
+        jobsArray.reverse()
+        for(const job of jobsArray){
+            returnDataFromDB(job, jobsHeardBackFromInDB, jobsHeardBackFrom);
+        }
+    }
+    else{
+        let noJobsMessage = document.createElement('p')
+        noJobsMessage.textContent = "No jobs heard back from or any stats yet"
+        jobsHeardBackFrom.appendChild(noJobsMessage)
+    }
+  });
+  
+  onValue(jobsRejectedFromInDB, function(snapshot){
+    if(snapshot.exists()){
+        let jobsArray = Object.entries(snapshot.val())
+        jobsArray.reverse()
+        for(const job of jobsArray){
+            returnDataFromDB(job, jobsRejectedFromInDB, jobsRejectedFrom);
+        }
+    }
+    else{
+        let noJobsMessage = document.createElement('p')
+        noJobsMessage.textContent = "No jobs rejected from or any stats yet"
+        jobsRejectedFrom.appendChild(noJobsMessage)
+    }
+  });
+  
+  onValue(jobsInterviewedForInDB, function(snapshot){
+    if(snapshot.exists()){
+        let jobsArray = Object.entries(snapshot.val())
+        jobsArray.reverse()
+        for(const job of jobsArray){
+            returnDataFromDB(job, jobsInterviewedForInDB, jobsInterviewedFor);
+        }
+    }
+    else{
+        let noJobsMessage = document.createElement('p')
+        noJobsMessage.textContent = "No jobs interviewed for or any stats yet"
+        jobsInterviewedFor.appendChild(noJobsMessage)
+    }
+  });
+  
 // function clearInput()
 
-function createJobItem(itemValue){
+function returnDataFromDB(itemValue, databaseRef, dbArea){
     let newElement = document.createElement('li')
     newElement.textContent = itemValue[1]
-    jobsAppliedFor.appendChild(newElement)
-    newElement.addEventListener('click', function(){
-        let exactLocationOfJobItem = ref(database, `jobs/${itemValue[0]}`)
-        remove(exactLocationOfJobItem)
-    })
+    dbArea.appendChild(newElement)
 }
+ 
 
 function addButtonClickListener(button, inputField, databaseRef){
     button.addEventListener('click', function(){
@@ -89,4 +134,10 @@ function addButtonClickListener(button, inputField, databaseRef){
         // clearInput(inputField)
     })
 }
+
+
+
 addButtonClickListener(submitAppliedButton, submitAppliedInput, jobStatsInDB)
+addButtonClickListener(submitHeardBackButton, submitHeardBackInput, jobsHeardBackFromInDB)
+addButtonClickListener(submitAppliedButton, submitAppliedInput, jobsRejectedFromInDB)
+addButtonClickListener(submitAppliedButton, submitAppliedInput, jobsInterviewedForInDB)
