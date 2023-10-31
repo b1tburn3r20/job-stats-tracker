@@ -43,19 +43,41 @@
       </div>
       <div class="form-container" id="rejected">
         <p>I got rejected from..</p>
-        <input type="text" placeholder="Enter company name" id="rejected" />
-        <button>Add Submission</button>
+        <input
+          id="submit-rejected-input"
+          type="text"
+          placeholder="Enter company name"
+          id="rejected"
+        />
+        <button id="submit-rejected-button">Add Submission</button>
       </div>
       <div class="form-container" id="interview">
         <p>I got interviewed at..</p>
-        <input type="text" placeholder="Enter company name" id="interview" />
-        <button>Add Submission</button>
+        <input
+          id="submit-interviewed-input"
+          type="text"
+          placeholder="Enter company name"
+          id="interview"
+        />
+        <button id="submit-interviewed-button">Add Submission</button>
       </div>
       <!-- Showing Statistics -->
-      <div id="jobs-applied-to"></div>
-      <div id="jobs-heard-back-from"></div>
-      <div id="jobs-rejected-from"></div>
-      <div id="jobs-interviewed-for"></div>
+      <div>
+        <h3>Jobs Applied to: </h3>
+        <div id="jobs-applied-to" class="form"</div>
+      </div>
+      <div>
+        <h3>Jobs Heard Back From: </h3>
+        <div id="jobs-heard-back-from"></div>
+      </div>
+      <div>
+        <h3>Jobs Rejected From: </h3>
+        <div id="jobs-rejected-from"></div>
+      </div>
+      <div>
+        <h3>Jobs Interviewed For: </h3>
+        <div id="jobs-interviewed-for"></div>
+      </div>
     </div>
 
     <script type="module" src="script.js"></script>

@@ -48,6 +48,12 @@ header{
     background-color: black;
     color: white;
 }
+.form{
+    display: hidden;
+}
+.database-list-item{
+    display: none;
+}
 #form-selector{
     margin-top: 1rem;
     display: flex;
