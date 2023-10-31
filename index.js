@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, push, onValue, remove,} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
+    databaseURL: "https://job-stat-tracker-default-rtdb.firebaseio.com/"
 } 
 
 const app =  initializeApp(appSettings)
@@ -153,7 +154,6 @@ function getCountFromDB(databaseRef, dbArea){
             let newElement = document.createElement('h3')
             newElement.className = 'stat-number'
             newElement.textContent = count
-            console.log(count);
             dbArea.prepend(newElement)
             newElement.addEventListener('click', function(){
                 toggleChildrenVisibility(dbArea);
@@ -212,9 +212,18 @@ function getCountForChartFromDB(databaseRef){
     })
 }
 
+const forms = [appliedForm, heardBackForm, rejectedForm, interviewForm];
+function hideAllForms() {
+    forms.forEach(form => {
+        if (form.style.display !== 'none') {
+            form.style.display = 'none';
+        }
+    });
+}
 
  function toggleFormDisplay(form, button){
     button.addEventListener('click', function(){
+        hideAllForms()
         if(form.classList.contains('show')){
             form.classList.remove('show');
             setTimeout(function() {
@@ -334,7 +343,6 @@ const chartTypePolarArea = "polarArea"
 function addButtonClickListener(button, inputField, databaseRef){
     button.addEventListener('click', function(){
         if(inputField.value.trim() !== ""){
-            console.log(inputField.value);
             push(databaseRef, inputField.value)
         }
         // clearInput(inputField)
@@ -365,6 +373,7 @@ function addButtonClickListener(button, inputField, databaseRef){
 // })
 
 barsIcon.addEventListener('click', function(){
+    hideAllForms()
     if(formSelector.style.display !== 'flex'){
         anime({
             targets: formSelector,
