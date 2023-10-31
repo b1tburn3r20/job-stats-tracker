@@ -3,26 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link rel="stylesheet" href="style.css" />
-    <title>Job Seeking Tracker</title>
+
+    <title>Job Journey</title>
   </head>
   <body>
     <div id="container">
-      <header>Job Seeking Stats App</header>
-      <p id="intro">
-        Uv zl anzr vf Nyrwnaqeb Orezhqrm, V nz n shyy fgnpx Whavbe Fbsgjner
-        Ratvarre jub qbrfag unir n qrterr va pbzchgre fpvrapr be n pbyyrtr
-        qrterr. Bgure guna pbzcyrgvat n obbgpnzc sbe fbsgjner ratvarrevat
-        vzzrefvir, V nz pbzcyrgryl frys-gnhtug. Guvf ncc vf genpxvat ubj ybat,
-        ubj znal nccyvpngvbaf, vagreivrjf rgp hagvy V trg n wbo va gur eryngrq
-        svryq.
-      </p>
-      <div id="form-selector">
-        <button id="applied-form-button">Applied to</button>
-        <button id="heard-back-form-button">Heard back</button>
-        <button id="rejected-form-button">Rejected</button>
-        <button id="interviewed-form-button">Interviewed</button>
+      <header>Job StatTrack</header>
+      <div id="notice-container"><div id="notice-icon-container">
+        <i id="notice-icon" class="fa-solid fa-circle-question fa-lg" style="color: #fafafa;"></i></div>
+        <!-- <p id="intro">
+          Hi my name is Alejandro Bermudez, I am a full stack Junior Software
+          Engineer who doesnt have a degree in computer science or a college
+          degree. Other than completing a bootcamp for software engineering
+          immersive, I am completely self-taught. This app is tracking how long,
+          how many applications, interviews etc until I get a job in the related
+          field.</p> -->
       </div>
+      
+      
+      </p>
+      <div id="form-settings">
+        <div id="form-selector">
+          <button class="form-opening-button" id="applied-form-button">Applied</button>
+          <button class="form-opening-button" id="heard-back-form-button">Heard back</button>
+          <button class="form-opening-button" id="rejected-form-button">Rejected</button>
+          <button class="form-opening-button" id="interviewed-form-button">Interviewed</button>
+        </div>
+        <i id="bars-icon" class="fa-solid fa-bars fa-lg" style="color: #fafafa;"></i>
+
+      </div>      
       <div class="form-container" id="applied">
         <p>I applied to..</p>
         <input
@@ -63,7 +74,15 @@
       </div>
       <!-- Showing Statistics -->
       <div id="statistics-parent-container">
-        <h2 id="statistics-header">Job Hunt Statistics</h2>
+        <!-- <h2 id="statistics-header">Job Hunt Statistics</h2> -->
+        <div id="chart-icons">
+          <i id="chart-pie-icon" class="fa-solid fa-chart-pie fa-lg" style="color: #fafafa;"></i>
+          <i id="chart-simple-icon" class="fa-solid fa-chart-simple fa-lg" style="color: #fafafa;"></i>
+          <i id="chart-circle-dot-icon" class="fa-solid fa-circle-dot fa-lg" style="color: #fafafa;"></i>
+          <i id="chart-layer-group-icon" class="fa-solid fa-layer-group fa-lg" style="color: #fafafa;"></i>
+      </div>
+      
+
         <canvas id="myPieChart"></canvas>
 
       <div class="statistic-container">
@@ -84,8 +103,10 @@
       </div>
     </div>
       </div>
-      
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/1546d6398c.js" crossorigin="anonymous"></script>
     <script type="module" src="script.js"></script>
   </body>
 </html>

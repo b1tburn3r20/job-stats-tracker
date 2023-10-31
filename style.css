@@ -16,16 +16,18 @@ header{
     margin-bottom: 1rem;
 }
 #container{
+    margin: .5rem;
     display: flex;
     flex-direction: column;
     max-width: 350px;
-    border: 1px solid white;
+    border: 2px solid rgb(32, 32, 32);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     justify-content: center;
     padding: 1rem;
 }
 #intro{
+    display: none;
     font-size: .8rem;
     font-style: italic;
     color: white;
@@ -37,27 +39,58 @@ header{
 }
 
 #form-selector{
-    margin-top: 1rem;
-    display: flex;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-}
-#form-selector > button {
-    background-color: transparent;
-    border: 2px solid white;
-    padding: .5rem;
-    border-radius: 5px;
-    color: rgb(250, 250, 250);
-    font-weight: 650;
-}
-#form-selector > button:hover{
-    cursor: pointer;
-    background-color: rgb(250, 250, 250);
-    color: rgb(18, 18, 18);
+    display: none;
+    flex-direction: column;
+    width: 80%;
 }
 #statistics-header{
     margin: 1rem;
     text-align: center;
+}
+
+#bars-icon{
+cursor: pointer;
+padding: 1rem;
+}
+#notice-icon-container{
+    display: none;
+    justify-content: end;
+    cursor: pointer;
+}
+#notice-icon{
+margin: 1rem;
+}
+#notice-container{
+    display: flex;
+}
+#form-settings{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-bottom: 4rem;
+}
+#chart-icons {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+
+.form-opening-button{
+    background-color: transparent;
+    padding: 1rem;
+    border-radius: 5px;
+    color: rgb(250, 250, 250);
+    font-size: 1.2rem;
+    font-weight: 650;
+    letter-spacing: 1px;
+}
+.form-opening-button:hover{
+    cursor: pointer;
+    background-color: rgb(250, 250, 250);
+    color: rgb(18, 18, 18);
 }
 .stat-title{
     margin: .5rem;
@@ -72,29 +105,50 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 .form-container > input{
     border-radius: 15px;
     padding: .5rem;
+    background-color: transparent;
+    color: rgb(250, 250, 250);
 }
 .form-container > button{
     border: 2px solid white;
-    border-radius: 15px;
     padding: .5rem;
+    border-radius: 15px;
     cursor: pointer;
     outline: none;
     border: none;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
+    background-color: transparent;
+    color: rgba(250, 250, 250, .7);
+    letter-spacing: .5px;
 }
 .form-container > button:hover{
     background-color: black;
     color: white;
 }
+.form-container > input::placeholder{
+    text-align: center;
+    color: rgba(250, 250, 250, .7);
+    letter-spacing: .5px;
+}
 .form{
     display: hidden;
 }
+.form-container {
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s ease-in-out, display 0s 0.5s;
+   }
+   
+   .form-container.show {
+    opacity: 1;
+    display: flex;
+    transition: opacity 0.5s ease-in-out;
+   }
+   
 .database-list-item{
     display: none;
     list-style: decimal ;
