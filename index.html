@@ -62,24 +62,30 @@
         <button id="submit-interviewed-button">Add Submission</button>
       </div>
       <!-- Showing Statistics -->
-      <div>
-        <h3>Jobs Applied to: </h3>
-        <div id="jobs-applied-to" class="form"</div>
+      <div id="statistics-parent-container">
+        <h2 id="statistics-header">Job Hunt Statistics</h2>
+        <canvas id="myPieChart"></canvas>
+
+      <div class="statistic-container">
+        <h3 class="stat-title">Jobs Applied to: </h3>
+        <div id="jobs-applied-to" class="form"</div></div>
       </div>
-      <div>
-        <h3>Jobs Heard Back From: </h3>
+      <div class="statistic-container">
+        <h3 class="stat-title">Jobs Heard Back From: </h3>
         <div id="jobs-heard-back-from"></div>
       </div>
-      <div>
-        <h3>Jobs Rejected From: </h3>
+      <div class="statistic-container">
+        <h3 class="stat-title">Jobs Rejected From: </h3>
         <div id="jobs-rejected-from"></div>
       </div>
-      <div>
-        <h3>Jobs Interviewed For: </h3>
+      <div class="statistic-container">
+        <h3 class="stat-title">Jobs Interviewed For: </h3>
         <div id="jobs-interviewed-for"></div>
       </div>
     </div>
-
+      </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="script.js"></script>
   </body>
 </html>

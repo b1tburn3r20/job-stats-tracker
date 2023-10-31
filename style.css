@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     background-color: rgb(18, 18, 18);
     color: rgb(250, 250, 250);
@@ -10,26 +13,67 @@ header{
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
+    margin-bottom: 1rem;
 }
 #container{
     display: flex;
     flex-direction: column;
     max-width: 350px;
     border: 1px solid white;
-    border-radius: 15px;
-    padding: 2rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     justify-content: center;
-
+    padding: 1rem;
 }
 #intro{
     font-size: .8rem;
     font-style: italic;
     color: white;
 }
+#statistics-parent-container{
+    display: flex;
+    flex-direction: column;
+    margin: -1rem;
+}
+
+#form-selector{
+    margin-top: 1rem;
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+#form-selector > button {
+    background-color: transparent;
+    border: 2px solid white;
+    padding: .5rem;
+    border-radius: 5px;
+    color: rgb(250, 250, 250);
+    font-weight: 650;
+}
+#form-selector > button:hover{
+    cursor: pointer;
+    background-color: rgb(250, 250, 250);
+    color: rgb(18, 18, 18);
+}
+#statistics-header{
+    margin: 1rem;
+    text-align: center;
+}
+.stat-title{
+    margin: .5rem;
+    
+}
+.stat-number{
+    padding: .5rem;
+    background-color: rgb(32, 32, 32);
+    cursor: pointer;
+}
 .form-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 1rem;
+    margin-bottom: 2rem;
 }
 .form-container > input{
     border-radius: 15px;
@@ -53,23 +97,13 @@ header{
 }
 .database-list-item{
     display: none;
+    list-style: decimal ;
 }
-#form-selector{
-    margin-top: 1rem;
+.database-list-item:nth-child(odd){
+    background-color: rgb(32, 32, 32);
+}
+.statistic-container{
     display: flex;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-}
-#form-selector > button {
-    background-color: transparent;
-    border: 2px solid white;
-    padding: .5rem;
-    border-radius: 5px;
-    color: rgb(250, 250, 250);
-    font-weight: 650;
-}
-#form-selector > button:hover{
-    cursor: pointer;
-    background-color: rgb(250, 250, 250);
-    color: rgb(18, 18, 18);
+    flex-direction: column;
+    justify-content: start;
 }

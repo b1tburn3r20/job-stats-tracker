@@ -102,6 +102,50 @@ onValue(jobStatsInDB, function(snapshot){
     }
   });
 
+  onValue(jobStatsInDB, function(snapshot){
+    Promise.all([
+        getCountForChartFromDB(jobStatsInDB),
+        getCountForChartFromDB(jobsHeardBackFromInDB),
+        getCountForChartFromDB(jobsRejectedFromInDB),
+        getCountForChartFromDB(jobsInterviewedForInDB)
+    ]).then(data => {
+        updatePieChart(myPieChart, data);
+    });
+});
+
+onValue(jobsHeardBackFromInDB, function(snapshot){
+    Promise.all([
+        getCountForChartFromDB(jobStatsInDB),
+        getCountForChartFromDB(jobsHeardBackFromInDB),
+        getCountForChartFromDB(jobsRejectedFromInDB),
+        getCountForChartFromDB(jobsInterviewedForInDB)
+    ]).then(data => {
+        updatePieChart(myPieChart, data);
+    });
+});
+
+onValue(jobsRejectedFromInDB, function(snapshot){
+    Promise.all([
+        getCountForChartFromDB(jobStatsInDB),
+        getCountForChartFromDB(jobsHeardBackFromInDB),
+        getCountForChartFromDB(jobsRejectedFromInDB),
+        getCountForChartFromDB(jobsInterviewedForInDB)
+    ]).then(data => {
+        updatePieChart(myPieChart, data);
+    });
+});
+
+onValue(jobsInterviewedForInDB, function(snapshot){
+    Promise.all([
+        getCountForChartFromDB(jobStatsInDB),
+        getCountForChartFromDB(jobsHeardBackFromInDB),
+        getCountForChartFromDB(jobsRejectedFromInDB),
+        getCountForChartFromDB(jobsInterviewedForInDB)
+    ]).then(data => {
+        updatePieChart(myPieChart, data);
+    });
+});
+
 
   function getCountFromDB(databaseRef, dbArea){
     onValue(databaseRef, function(snapshot){
@@ -109,6 +153,7 @@ onValue(jobStatsInDB, function(snapshot){
             let data = snapshot.val();
             let count = Object.keys(data).length
             let newElement = document.createElement('h3')
+            newElement.className = 'stat-number'
             newElement.textContent = count
             console.log(count);
             dbArea.prepend(newElement)
@@ -126,13 +171,28 @@ onValue(jobStatsInDB, function(snapshot){
         }
     });
 }
+function getCountForChartFromDB(databaseRef){
+    return new Promise((resolve, reject) => {
+        onValue(databaseRef, function(snapshot){
+            if(snapshot.exists()){
+                let data = snapshot.val();
+                let count = Object.keys(data).length
+                resolve(count);
+            }
+            else {
+                resolve(0);
+            }
+        });
+    });
+ }
+ 
 
 
  function toggleChildrenVisibility(dbArea){
     let children = dbArea.querySelectorAll('.database-list-item')
     children.forEach(child => {
-        if (child.style.display !== "flex"){
-            child.style.display = 'flex'
+        if (child.style.display !== "list-item"){
+            child.style.display = 'list-item'
         }
         else {
             child.style.display = "none"
@@ -163,7 +223,39 @@ function returnDataFromDB(itemValue, databaseRef, dbArea){
     newElement.textContent = itemValue[1]
     dbArea.appendChild(newElement)
 }
- 
+function updatePieChart(myPieChart, data) {
+    var chartData = {
+        labels: ["Applied", "Heard Back", "Rejected", "Interviewed"],
+        datasets: [
+            {
+                data: data,
+                backgroundColor: ["#F8B195", "#F67280", "#C06C84", "#6C5B7B"],
+            },
+        ],
+    };
+
+    myPieChart.data = chartData;
+    myPieChart.update();
+}
+var ctx = document.getElementById("myPieChart").getContext("2d");
+
+var chartData = {
+    labels: ["Applied", "Heard Back", "Rejected", "Interviewed"],
+    datasets: [
+        {
+            data: [0, 0, 0, 0],
+            backgroundColor: ["#F8B195", "#F67280", "#C06C84", "#6C5B7B"],
+        },
+    ],
+};
+
+var myPieChart = new Chart(ctx, {
+    type: "bar",
+    data: chartData,
+});
+
+
+
 
 function addButtonClickListener(button, inputField, databaseRef){
     button.addEventListener('click', function(){
