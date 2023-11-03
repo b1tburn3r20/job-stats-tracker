@@ -89,6 +89,7 @@ margin: 1rem;
     font-size: 1.2rem;
     font-weight: 650;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 .form-opening-button:active{
     cursor: pointer;
@@ -109,6 +110,7 @@ margin: 1rem;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 4rem;
+    cursor: pointer;
 }
 .form-container > input{
     border-radius: 15px;
